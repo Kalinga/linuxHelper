@@ -11,8 +11,14 @@
 * How to get the proxy server address, to be used in Virtual Machine env. when Host is Windows?
 
 
-    Look for the .pac (proxy automatic Configuration) file, can be found from IE settings
-    Check for the proxy server name
-    From a command prompt/Linux terminal `ping company-proxy-.name.com`
-    Read the output [zz.yy.xx.vv], that is the proxy server IP address
-     
+     Look for the .pac (proxy automatic Configuration) file, can be found from IE settings
+     Check for the proxy server name
+     From a command prompt/Linux terminal `ping company-proxy-.name.com`
+     Read the output [zz.yy.xx.vv], that is the proxy server IP address
+    
+#### Gateway
+
+
+    This is the address of the router or dhcp server
+    route -n
+    next to the destination address 0.0.0.0
