@@ -25,3 +25,12 @@ LSB: Linux Standard Base
  `sed = file | sed 'N; s/\n/: /'`
  `sed -n  -e 's/FirstWord.*$/A new text for the entire Line/;p'  path/to/yourfile`
  [X] Use '"$1"' for bash command line variable substitution in the sed
+
+Add a new user to the sudo group
+root# gpasswd -a <demo_user> sudo
+
+List of services running in Ubuntu
+service --status-all
+
+Authorization related failure logs could be found from:
+/var/log/auth.log
