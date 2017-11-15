@@ -34,3 +34,21 @@ service --status-all
 
 Authorization related failure logs could be found from:
 /var/log/auth.log
+
+Check a perticulat port usage
+lsof -i :80 
+sudo fuser -k 80/tcp 
+
+Clean cache and make some space
+sudo apt clean
+
+See all the services running on Ubuntu
+Most of them are started at the boot time
+service --status-all
+
+To find out all services that have been run at startup:
+systemctl list-units --type service
+
+To disable a service
+sudo systemctl disable cups-browsed.service
+sudo systemctl disable jenkins.service
