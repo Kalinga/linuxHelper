@@ -52,3 +52,20 @@ systemctl list-units --type service
 To disable a service
 sudo systemctl disable cups-browsed.service
 sudo systemctl disable jenkins.service
+
+Useful options for find command
+where which what
+iname
+maxdepth
+not name
+!
+o
+-type f
+-type d
+-mtime
+-atime
+-cmin
+-mmin
+-type f -empty
+-type d -empty
+find . -exec ls -ld {} \;
