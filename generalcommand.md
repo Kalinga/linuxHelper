@@ -35,7 +35,7 @@ service --status-all
 Authorization related failure logs could be found from:
 /var/log/auth.log
 
-Check a perticulat port usage
+Check a perticular port usage
 lsof -i :80 
 sudo fuser -k 80/tcp 
 
@@ -69,3 +69,9 @@ o
 -type f -empty
 -type d -empty
 find . -exec ls -ld {} \;
+
+find -type d -name "kali"  -print0 -exec ./kali_compress_backup.sh {} \; | tee compress.log
+find -type d -name "kali.org"   | xargs rm -rf
+find . -maxdepth 1 -type d -name "kalinga_*" -exec mv '{}' dest/ \;
+grep -irn "Kali" --exclude=\*.{out,in,sh}
+
