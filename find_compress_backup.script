@@ -1,0 +1,39 @@
+#!/bin/bash
+# find -type d -name "myDir" -print0 -exec ./compress_backup.sh {} \; > compress1.log
+#echo $@
+_DIR_NAME=$1
+P_DIR_LENGTH=${#_DIR_NAME}-4
+P_DIR_NAME=${_DIR_NAME:0:$P_DIR_LENGTH}
+
+echo""
+echo "Parent dir: "$P_DIR_NAME
+
+cd $P_DIR_NAME
+if [ -d myDir ]; then
+	echo "Compressing: " $1
+	echo "tar cfvJ "$P_DIR_NAME"my.tar.xz" $_DIR_NAME 
+	tar cfJ my.tar.xz myDir
+else
+	echo "No myDir director<y found!"
+	cd -
+	echo $(pwd)
+
+	echo "-------------------------------------------------------"
+	exit 0
+fi
+
+if [ "$?" -ne "0" ]; then
+	echo "We have some problem!!"
+	exit 1
+fi
+
+echo "Renaming : " $1 to $1".org"
+
+echo "mv "$_DIR_NAME " "$_DIR_NAME".org"
+
+mv myDir myDir.org
+
+cd -
+echo $(pwd)
+
+echo "-------------------------------------------------------"
