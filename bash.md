@@ -17,6 +17,7 @@ $SECONDS - The number of seconds since the script was started.
 $RANDOM - Returns a different random number each time is it referred to.
 $LINENO - Returns the current line number in the Bash script
 
+http://linuxcommand.org/lc3_man_pages/bash1.html 
 
 CONDITIONAL EXPRESSIONS
        Conditional  expressions  are  used  by the [[ compound command and the
@@ -120,3 +121,15 @@ CONDITIONAL EXPRESSIONS
               less than, less than or equal to, greater than, or greater  than
               or  equal  to arg2, respectively.  Arg1 and arg2 may be positive
               or negative integers.
+ *********************************************************************************
+ $1, $2, $3, ... are the positional parameters.
+"$@" is an array-like construct of all positional parameters, {$1, $2, $3 ...}.
+"$*" is the IFS expansion of all positional parameters, $1 $2 $3 ....
+$# is the number of positional parameters.
+$- current options set for the shell.
+$$ pid of the current shell (not subshell).
+$_ most recent parameter (or the abs path of the command to start the current shell immediately after startup).
+$IFS is the (input) field separator.
+$? is the most recent foreground pipeline exit status.
+$! is the PID of the most recent background command.
+$0 is the name of the shell or shell script.
