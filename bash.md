@@ -133,3 +133,29 @@ $IFS is the (input) field separator.
 $? is the most recent foreground pipeline exit status.
 $! is the PID of the most recent background command.
 $0 is the name of the shell or shell script.
+
+**********************tcpdump****************************
+tcpdump -n -i eth0 port not 22 and host 10.x.x.x
+
+
+Test is used by virtually every shell script written. It may not seem that way, because test is not often called directly. test is more frequently called as [. [ is a symbolic link to test, just to make shell programs more readable. It is also normally a shell builtin (which means that the shell itself will interpret [ as meaning test, even if your Unix environment is set up differently):
+
+$ type [
+[ is a shell builtin
+$ which [
+/usr/bin/[
+$ ls -l /usr/bin/[
+lrwxrwxrwx 1 root root 4 Mar 27 2000 /usr/bin/[ -> test
+$ ls -l /usr/bin/test
+-rwxr-xr-x 1 root root 35368 Mar 27  2000 /usr/bin/test
+This means that '[' is actually a program, just like ls and other programs, so it must be surrounded by spaces:
+
+if [$foo = "bar" ]
+will not work; it is interpreted as if test$foo = "bar" ], which is a ']' without a beginning '['. Put spaces around all your operators. I've highlighted the mandatory spaces with the word 'SPACE' - replace 'SPACE' with an actual space; if there isn't a space there, it won't work:
+
+if SPACE [ SPACE "$foo" SPACE = SPACE "bar" SPACE ]
+Note: Some shells also accept "==" for string comparison; this is not portable, a single "=" should be used for strings, or "-eq" for integers.
+
+Test is a simple but powerful comparison utility. For full details, run man test on your system, but here are some usages and typical examples.
+
+Test is most often invoked indirectly via the if and while statements. It is also the reason you will come into difficulties if you create a program called test and try to run it, as this shell builtin will be called instead of your program! 
