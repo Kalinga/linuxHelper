@@ -1,4 +1,4 @@
-More history size and tame stamp
+More history size and time stamp
 
 export HISTTIMEFORMAT="%F %T "
 export HISTSIZE="10000"
@@ -159,3 +159,8 @@ Note: Some shells also accept "==" for string comparison; this is not portable, 
 Test is a simple but powerful comparison utility. For full details, run man test on your system, but here are some usages and typical examples.
 
 Test is most often invoked indirectly via the if and while statements. It is also the reason you will come into difficulties if you create a program called test and try to run it, as this shell builtin will be called instead of your program! 
+
+
+script_date=`date "+%Y-%m-%d %H:%M:%S"`
+echo "Script Start Time: $script_date"
+echo "Script Arguments":  $0 $*
