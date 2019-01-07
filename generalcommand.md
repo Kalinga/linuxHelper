@@ -75,3 +75,5 @@ find -type d -name "kali.org"   | xargs rm -rf
 find . -maxdepth 1 -type d -name "kalinga_*" -exec mv '{}' dest/ \;
 grep -irn "Kali" --exclude=\*.{out,in,sh}
 
+find file size then sum of the size
+find -name test_file.log* | xargs du -h | sed 's/\ / /' |awk '{print$1}' | grep G | cut -c1-3 | awk 'NF{sum+=$1} END {print sum}'
